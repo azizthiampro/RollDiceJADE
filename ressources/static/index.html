@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Output</title>
+</head>
+<body>
+<h1>Terminal Output</h1>
+<pre id="output"></pre>
+
+<script>
+    function fetchTerminalOutput() {
+        fetch('/terminal-output')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').innerText = data;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Fetch terminal output on page load
+    fetchTerminalOutput();
+
+    // Periodically fetch terminal output (every 5 seconds in this example)
+    setInterval(fetchTerminalOutput, 5000);
+</script>
+</body>
+</html>
